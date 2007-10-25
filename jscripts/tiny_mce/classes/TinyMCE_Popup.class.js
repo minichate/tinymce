@@ -155,7 +155,7 @@ TinyMCE_Popup.prototype = {
 	 * @param {string} str String to evaluate on load.
 	 */
 	executeOnLoad : function(str) {
-		if (tinyMCE.isOpera)
+		if (tinyMCE.isOpera && parseFloat(opera.version()) < 9.5)
 			this.onLoadEval = str;
 		else
 			eval(str);

@@ -2089,7 +2089,7 @@ TinyMCE_Engine.prototype = {
 	 * @param {boolean} setup_content Optional state if it's called from setup content function or not.
 	 */
 	triggerNodeChange : function(focus, setup_content) {
-		var elm, inst, editorId, undoIndex = -1, undoLevels = -1, doc, anySelection = false, st;
+		var elm, inst, editorId, undoIndex = -1, undoLevels = -1, doc, anySelection, st;
 
 		if (tinyMCE.selectedInstance) {
 			inst = tinyMCE.selectedInstance;
@@ -2110,9 +2110,7 @@ TinyMCE_Engine.prototype = {
 				elm = inst.getBody();
 
 			inst.switchSettings();
-
-			if (tinyMCE.selectedElement)
-				anySelection = (tinyMCE.selectedElement.nodeName.toLowerCase() == "img") || (st && st.length > 0);
+			anySelection = !inst.selection.isCollapsed();
 
 			if (tinyMCE.settings.custom_undo_redo) {
 				undoIndex = inst.undoRedo.undoIndex;
