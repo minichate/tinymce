@@ -27,6 +27,7 @@
 	$zip->open();
 	$zip->deleteDir("/tinymce/examples/testcases");
 	$zip->deleteDir("/tinymce/jscripts/tiny_mce/classes");
+	$zip->deleteFile("/tinymce/examples/translate.html");
 	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_dev.js");
 	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_jquery.js");
 	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_prototype.js");
