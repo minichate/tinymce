@@ -28,6 +28,8 @@
 	$zip->deleteDir("/tinymce/examples/testcases");
 	$zip->deleteDir("/tinymce/jscripts/tiny_mce/classes");
 	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_dev.js");
+	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_jquery.js");
+	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_prototype.js");
 	$zip->deleteFile("/tinymce/JSTrim.config");
 	$zip->deleteFile("/tinymce/JSTrim.exe");
 	$zip->deleteFile("/tinymce/JSTrim_mono.exe");
