@@ -2333,7 +2333,7 @@ TinyMCE_Engine.prototype = {
 				}
 
 				// Make it bigger if statusbar is forced
-				if (tinyMCE.isGecko) {
+				if (tinyMCE.isGecko && win.document) {
 					if (win.document.defaultView.statusbar.visible)
 						win.resizeBy(0, tinyMCE.isMac ? 10 : 24);
 				}

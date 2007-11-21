@@ -1,5 +1,6 @@
 Version 2.1.3 (2007-xx-xx)
 	Fixed bug with copy paste scrolled to top of content in IE when a specific doctype was used.
+	Fixed bug with Firefox 3 opening all dialogs twice.
 	Fixed various issues with Opera 9.50 such as broken dialogs, selection blocking etc.
 Version 2.1.2 (2007-08-21)
 	Added fix for polluting third partly libraries that insist on messing with internal objects.
