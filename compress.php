@@ -31,6 +31,7 @@
 	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_dev.js");
 	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_jquery.js");
 	$zip->deleteFile("/tinymce/jscripts/tiny_mce/tiny_mce_prototype.js");
+	$zip->deleteDir("/tinymce/jscripts/tiny_mce/plugins/spellchecker");
 	$zip->deleteFile("/tinymce/JSTrim.config");
 	$zip->deleteFile("/tinymce/JSTrim.exe");
 	$zip->deleteFile("/tinymce/JSTrim_mono.exe");
@@ -39,9 +40,24 @@
 
 	// Create spellchecker PHP
 	$ver = getVersion('tinymce_spellchecker_php/changelog');
+
+	// Replace version in source
+	$data = file_get_contents("tinymce/jscripts/tiny_mce/plugins/spellchecker/editor_plugin_src.js");
+	$data = str_replace('tinymce.majorVersion + "." + tinymce.minorVersion', '"' . str_replace("_", ".", $ver) . '"', $data);
+	$data = str_replace('"{backend}"', "this.url+'/rpc.php'", $data);
+	file_put_contents("tinymce_spellchecker_php/editor_plugin_src.js", $data);
+
+	// Replace version in min
+	$data = file_get_contents("tinymce/jscripts/tiny_mce/plugins/spellchecker/editor_plugin.js");
+	$data = str_replace('tinymce.majorVersion+"."+tinymce.minorVersion', '"' . str_replace("_", ".", $ver) . '"', $data);
+	$data = str_replace('"{backend}"', "this.url+'/rpc.php'", $data);
+	file_put_contents("tinymce_spellchecker_php/editor_plugin.js", $data);
+
 	$zip =& new ZipFile("tinymce_spellchecker_php_". $ver .".zip");
  	$zip->open();
 	$zip->addDirectory("/spellchecker", "tinymce_spellchecker_php");
+	$zip->addDirectory("/spellchecker/img", "tinymce/jscripts/tiny_mce/plugins/spellchecker/img");
+	$zip->addDirectory("/spellchecker/css", "tinymce/jscripts/tiny_mce/plugins/spellchecker/css");
 	$zip->deleteFile("/spellchecker/JSTrim.config");
 	$zip->deleteFile("/spellchecker/JSTrim.exe");
 	$zip->deleteFile("/spellchecker/JSTrim_mono.exe");
