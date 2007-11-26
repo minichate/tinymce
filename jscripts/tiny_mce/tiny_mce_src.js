@@ -6333,7 +6333,7 @@ TinyMCE_Selection.prototype = {
 		e = document.createElement("body");
 
 		if (r.cloneContents)
-			e.appendChild(r.cloneContents());
+			e.appendChild(document.importNode(r.cloneContents(), true));
 		else if (typeof(r.item) != 'undefined' || typeof(r.htmlText) != 'undefined')
 			e.innerHTML = r.item ? r.item(0).outerHTML : r.htmlText;
 		else
