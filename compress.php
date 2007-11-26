@@ -97,6 +97,22 @@
 	$zip->commit();
 	$zip->close();
 
+	// Create .NET package
+	$ver = getVersion('tinymce_package_dotnet/changelog.txt');
+	$zip =& new ZipFile("tinymce_package_dotnet_". $ver .".zip");
+ 	$zip->open();
+	$zip->addDirectory("/tinymce", "tinymce_package_dotnet");
+	$zip->addDirectory("/tinymce/js/tiny_mce", "tinymce/jscripts/tiny_mce");
+	$zip->deleteDir("/tinymce/js/tiny_mce/classes");
+	$zip->deleteFile("/tinymce/js/tiny_mce/tiny_mce_dev.js");
+	$zip->deleteFile("/tinymce/js/tiny_mce/tiny_mce_dev.js");
+	$zip->deleteFile("/tinymce/js/tiny_mce/tiny_mce_jquery.js");
+	$zip->deleteFile("/tinymce/js/tiny_mce/tiny_mce_prototype.js");
+	$zip->deleteFile("/tinymce/bin/Moxiecode.TinyMCE.xml");
+	$zip->addFile("/tinymce/tinymce_changelog.txt", "tinymce/changelog.txt");
+	$zip->commit();
+	$zip->close();
+
 	$end = time() - $start;
 	echo "Deploy done in " . $end . " sec\n";
 ?>

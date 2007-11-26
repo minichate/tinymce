@@ -7,6 +7,7 @@ rd /Q /s tinymce_compressor_cfm
 rd /Q /s tinymce_compressor_jsp
 rd /Q /s tinymce_compressor_net
 rd /Q /s tinymce_compressor_php
+rd /Q /s tinymce_package_dotnet
 del /Q *.zip
 
 :: Export new
@@ -16,6 +17,7 @@ svn export https://tinymce.svn.sourceforge.net/svnroot/tinymce/tinymce_compresso
 svn export https://tinymce.svn.sourceforge.net/svnroot/tinymce/tinymce_compressor_jsp/trunk tinymce_compressor_jsp
 svn export https://tinymce.svn.sourceforge.net/svnroot/tinymce/tinymce_compressor_net/trunk tinymce_compressor_net
 svn export https://tinymce.svn.sourceforge.net/svnroot/tinymce/tinymce_compressor_php/trunk tinymce_compressor_php
+svn export https://tinymce.svn.sourceforge.net/svnroot/tinymce/tinymce_package_dotnet/trunk tinymce_package_dotnet
 
 :: Compress
 php.exe -n compress.php
