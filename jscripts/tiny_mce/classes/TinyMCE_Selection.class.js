@@ -546,7 +546,7 @@ TinyMCE_Selection.prototype = {
 	isCollapsed : function() {
 		var r = this.getRng();
 
-		if (r.item)
+		if (!r || r.item)
 			return false;
 
 		return r.boundingWidth == 0 || this.getSel().isCollapsed;

@@ -5,8 +5,8 @@ function TinyMCE_Engine() {
 	var ua;
 
 	this.majorVersion = "2";
-	this.minorVersion = "1.3";
-	this.releaseDate = "2007-11-27";
+	this.minorVersion = "1.4";
+	this.releaseDate = "2008-07-xx";
 
 	this.instances = [];
 	this.switchClassCache = [];
@@ -6763,7 +6763,7 @@ TinyMCE_Selection.prototype = {
 	isCollapsed : function() {
 		var r = this.getRng();
 
-		if (r.item)
+		if (!r || r.item)
 			return false;
 
 		return r.boundingWidth == 0 || this.getSel().isCollapsed;
@@ -7125,7 +7125,7 @@ var TinyMCE_ForceParagraphs = {
 				rngBefore.deleteContents();
 
 				// Insert new paragraphs
-				if (tinyMCE.isOpera) {
+				if (tinyMCE.isOpera && parseFloat(opera.version()) < 9.5) {
 					paraBefore.normalize();
 					rngBefore.insertNode(paraBefore);
 					paraAfter.normalize();

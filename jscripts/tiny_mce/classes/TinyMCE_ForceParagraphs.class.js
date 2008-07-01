@@ -204,7 +204,7 @@ var TinyMCE_ForceParagraphs = {
 				rngBefore.deleteContents();
 
 				// Insert new paragraphs
-				if (tinyMCE.isOpera) {
+				if (tinyMCE.isOpera && parseFloat(opera.version()) < 9.5) {
 					paraBefore.normalize();
 					rngBefore.insertNode(paraBefore);
 					paraAfter.normalize();
